@@ -48,12 +48,13 @@ function scrollSpy(group, nowTop) {
     let wh = $(window).height();
     let targetTop = $(secGroupAry[group][0]).offset().top;
     let targetH = rebuildSecH(group)
-    return wh + nowTop - headerH > targetTop && wh + nowTop - headerH < targetTop + targetH ? true : false;
+    return wh + nowTop - headerH > targetTop && wh + nowTop - headerH < targetTop + targetH;
 }
 
 $(window).on('scroll', function() {
     let nowTop = $(this).scrollTop();
     $('.menu-item').each(function(i, el) {
+        console.log(i, el)
         scrollSpy($(el).attr('data-target'), nowTop) ? $(el).addClass('-active') : $(el).removeClass('-active')
     })
 })
